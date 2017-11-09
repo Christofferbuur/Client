@@ -1,1 +1,12 @@
 
+.tap_panels .panel{
+    background: black;
+}
+
+.tap_panels ul li{
+    background: black;
+}
+
+#hej {
+    color: #b92c28;
+}
