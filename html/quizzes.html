@@ -61,12 +61,19 @@
 
     $(function () {
         $('.tap_panels .taps li').on('click', function () {
+            //change class to active
+            var panelToShow = $(this).attr('rel');
+            $('.tap_panels .panel.active').slideUp(100, function () {
+                panelToShow.addClass('active').slideDown(100);
+            });
+
+
 
         //which panel to show
-var panelToShow = $(this).attr('rel');
+//var panelToShow = $(this).attr('rel');
 
 //hide current panel & show current panel in the callback (funtion)
-            $('.tap_panels .panel.active').slideUp(100, function () {
+          //  $('.tap_panels .panel.active').slideUp(100, function () {
 
 //Kan ikke få den til at vise den man trykker på!
 
@@ -78,7 +85,7 @@ var panelToShow = $(this).attr('rel');
              //   $(this).addClass('active');
 
 
-            });
+          // });
         });
         
     });

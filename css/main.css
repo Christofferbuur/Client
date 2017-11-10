@@ -10,7 +10,7 @@ margin: 0;
 .tap_panels ul li{
     list-style-type: none;
     display: inline-block;
-    background: #9c0900;
+    background: #737373;
     color: #e3e3e3;
     padding: 2%;
 
@@ -25,8 +25,8 @@ margin: 0;
     background: #c0c0c0;
 }
 
-.tap_panels ul.li.active{
-color: #f7f7f7;
+.tap_panels.taps.active{
+    color:greenyellow;
 }
 
 .tap_panels .panel.active {
