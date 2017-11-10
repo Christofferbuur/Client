@@ -1,3 +1,35 @@
 #lol {
     color: red;
 }
+
+.tap_panels{
+margin: 0;
+    padding: 0;
+
+}
+.tap_panels ul li{
+    list-style-type: none;
+    display: inline-block;
+    background: #9c0900;
+    color: #e3e3e3;
+    padding: 2%;
+
+}
+
+.tap_panels ul li:hover{
+    color: #dff0d8;
+}
+
+.tap_panels .panel{
+  display: none;
+    background: #c0c0c0;
+}
+
+.tap_panels ul.li.active{
+color: #f7f7f7;
+}
+
+.tap_panels .panel.active {
+    display:block;
+
+}

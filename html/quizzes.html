@@ -12,22 +12,21 @@
 
 <body>
 
-<h1 id="lol"> Hej</h1>
+<h1 id="lol"> Velkommen - vælg dit fag </h1>
 
 
 <div class = "tap_panels">
 <ul class = "taps">
 
-    <li>Virksomhedsøkonomi</li>
-    <li>Regnskab</li>
-    <li>Programmering</li>
-    <li>Virksomhedsøkonomi</li>
+    <li rel="panel 1" class = "active">Virksomhedsøkonomi</li>
+    <li rel="panel 2">Regnskab</li>
+    <li rel="panel 3">Programmering</li>
 </ul>
 
     <div id="panel 1" class = "panel active">
         quiz1<br/>
-        quiz1<br/>
-        quiz1<br/>
+        quiz2<br/>
+        quiz3<br/>
 </div>
 
 
@@ -48,10 +47,43 @@
 
 </div>
 
+<script src="../lib/js/jquery-3.2.1.js"></script>
+<script src="../lib/js/bootstrap.js"></script>
+<script src="../js/sdk.js"></script>
+<script src="../js/login.js"></script>
+
+
 
 </body>
 
+<script>
 
+
+    $(function () {
+        $('.tap_panels .taps li').on('click', function () {
+
+        //which panel to show
+var panelToShow = $(this).attr('rel');
+
+//hide current panel & show current panel in the callback (funtion)
+            $('.tap_panels .panel.active').slideUp(100, function () {
+
+//Kan ikke få den til at vise den man trykker på!
+
+            // $("#" + panelToShow.show())
+
+               // panelToShow.slideUp(200);
+
+
+             //   $(this).addClass('active');
+
+
+            });
+        });
+        
+    });
+
+</script>
 
 
 </html>
