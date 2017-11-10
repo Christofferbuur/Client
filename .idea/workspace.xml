@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fe0b9c9d-dae4-4d97-aa03-32ed8a9ac6f7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/main.css" afterPath="$PROJECT_DIR$/css/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/quizzes.html" afterPath="$PROJECT_DIR$/html/quizzes.html" />
-    </list>
+    <list default="true" id="fe0b9c9d-dae4-4d97-aa03-32ed8a9ac6f7" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -30,8 +27,8 @@
       <file leaf-file-name="quizzes.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/html/quizzes.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="56" column="7" lean-forward="true" selection-start-line="56" selection-start-column="7" selection-end-line="56" selection-end-column="7" />
+            <state relative-caret-position="402">
+              <caret line="70" column="49" lean-forward="true" selection-start-line="70" selection-start-column="49" selection-end-line="70" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -190,12 +187,12 @@
       <workItem from="1510258812838" duration="8000" />
       <workItem from="1510259658009" duration="36000" />
       <workItem from="1510261460473" duration="1461000" />
-      <workItem from="1510263388760" duration="5744000" />
+      <workItem from="1510263388760" duration="5808000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18047000" />
+    <option name="totallyTimeSpent" value="18111000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="734" extended-state="0" />
@@ -440,8 +437,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/html/quizzes.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="56" column="7" lean-forward="true" selection-start-line="56" selection-start-column="7" selection-end-line="56" selection-end-column="7" />
+        <state relative-caret-position="402">
+          <caret line="70" column="49" lean-forward="true" selection-start-line="70" selection-start-column="49" selection-end-line="70" selection-end-column="49" />
           <folding />
         </state>
       </provider>
