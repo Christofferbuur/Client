@@ -15,34 +15,33 @@
 <h1 id="lol"> Velkommen - vælg dit fag </h1>
 
 
-<div class = "tap_panels">
-<ul class = "taps">
+<div class="tap_panels">
+    <ul class="taps">
 
-    <li rel="panel 1" class = "active">Virksomhedsøkonomi</li>
-    <li rel="panel 2">Regnskab</li>
-    <li rel="panel 3">Programmering</li>
-</ul>
+        <li rel="panel 1" class="active">Virksomhedsøkonomi</li>
+        <li rel="panel 2" class="active">Regnskab</li>
+        <li rel="panel 3" class="active">Programmering</li>
+    </ul>
 
-    <div id="panel 1" class = "panel active">
+    <div id="panel 1" class="test">
         quiz1<br/>
         quiz2<br/>
         quiz3<br/>
-</div>
-
-
-    <div id="panel 2" class = "panel">
-        quiz2<br/>
-        quiz2<br/>
-        quiz2<br/>
     </div>
 
 
-    <div id="panel 3" class = "panel">
-        quiz3<br/>
-        quiz3<br/>
-        quiz3<br/>
+    <div id="panel 2" class="test1">
+        regnskab1<br/>
+        regnskab2<br/>
+        regnskab3<br/>
     </div>
 
+
+    <div id="panel 3" class="test2">
+        programmering1<br/>
+        programmering2<br/>
+        Programmering3<br/>
+    </div>
 
 
 </div>
@@ -51,7 +50,6 @@
 <script src="../lib/js/bootstrap.js"></script>
 <script src="../js/sdk.js"></script>
 <script src="../js/login.js"></script>
-
 
 
 </body>
@@ -63,33 +61,63 @@
         $('.tap_panels .taps li').on('click', function () {
             //change class to active
             var panelToShow = $(this).attr('rel');
-            $('.tap_panels .panel.active').slideUp(100, function () {
-                panelToShow.addClass('active').slideDown(100);
-            });
+
+            console.log(panelToShow);
+
+            if (panelToShow === "panel 1") {
+                console.log("hej1")
+                $('.tap_panels .test1').slideUp(100);
+
+                $('.tap_panels .test2').slideUp(100)
+
+                $('.tap_panels .test').slideToggle(100), function () {
+                    panelToShow.addClass('active').slideDown(100);
+
+                };
+            } else if (panelToShow === "panel 2") {
+                console.log("hej2")
+                $('.tap_panels .test').slideUp(100);
+
+                $('.tap_panels .test2').slideUp(100)
+
+                $('.tap_panels .test1').slideToggle(100), function () {
+                    panelToShow.addClass('active').slideToggle(100);
+                };
+            }
+            else if (panelToShow === "panel 3") {
+                console.log("hej3")
+                $('.tap_panels .test1').slideUp(100);
+
+                $('.tap_panels .test').slideUp(100)
+
+                $('.tap_panels .test2').slideToggle(100), function () {
+                    panelToShow.addClass('active').slideToggle(100);
+                };
+                ;
 
 
-
-        //which panel to show
-//var panelToShow = $(this).attr('rel');
-
-//hide current panel & show current panel in the callback (funtion)
-          //  $('.tap_panels .panel.active').slideUp(100, function () {
-
-//Kan ikke få den til at vise den man trykker på!
-
-            // $("#" + panelToShow.show())
-
-               // panelToShow.slideUp(200);
-
-
-             //   $(this).addClass('active');
-
-
-          // });
+            }
+            ;
         });
-        
     });
 
+    //which panel to show
+    //var panelToShow = $(this).attr('rel');
+
+    //hide current panel & show current panel in the callback (funtion)
+    //  $('.tap_panels .panel.active').slideUp(100, function () {
+
+    //Kan ikke få den til at vise den man trykker på!
+
+    // $("#" + panelToShow.show())
+
+    // panelToShow.slideUp(200);
+
+
+    //   $(this).addClass('active');
+
+
+    // });
 </script>
 
 

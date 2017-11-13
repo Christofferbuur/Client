@@ -31,5 +31,6 @@ margin: 0;
 
 .tap_panels .panel.active {
     display:block;
+    background: #c0c0c0;
 
 }
