@@ -18,7 +18,7 @@ $(document).ready(() => {
             console.log(username)
             console.log(password)
             console.log(passwordV)
-            alert("Username or password has not been typed. Please try again");
+            alert("Brugernavn og kodeord er ikke skrevet ind. Prøv igen");
         } else {
             if(password.valueOf() === passwordV.valueOf()) {
                 SDK.signup(username, password, (err, data) => {

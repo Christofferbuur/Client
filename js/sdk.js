@@ -43,6 +43,33 @@ const SDK = {
         });
     },
 
+    login: (username, password, callback) => {
+        SDK.request(
+            {
+                data:
+                    {
+                        username: username,
+                        password: password
+                    }, url: "/user/login",
+                method: "POST"
+            }, (err, data) => {
+                if (err) return callback(err);
+
+                callback(null, data);
+                //lidt ekstra her
+            });
+    },
+
+    loadCurrentUser: (callback) => {
+        SDK.request({
+            method: "GET",
+            url: "/user/myuser",
+            headers: {}
+
+        });
+    },
+
+
     encrypt: (encrypt) => {
         if (encrypt !== undefined && encrypt.length !== 0) {
             const key = ['L', 'Y', 'N'];
