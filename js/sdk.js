@@ -1,7 +1,7 @@
 const SDK = {
-  //forbindelse til databasen
     serverURL: "http://localhost:8080/api",
-    request: (options, cb) => {
+
+    request: (options, callback) => {
 
         let headers = {};
         if (options.headers) {
@@ -16,38 +16,56 @@ const SDK = {
             headers: headers,
             contentType: "application/json",
             dataType: "json",
-            data: JSON.stringify(options.data),
+            data: JSON.stringify(SDK.encrypt(JSON.stringify(options.data))),
             success: (data, status, xhr) => {
-                cb(null, data, status, xhr);
+                callback(null, SDK.decrypt(data), status, xhr);
             },
             error: (xhr, status, errorThrown) => {
-                cb({xhr: xhr, status: status, error: errorThrown});
+                callback({xhr: xhr, status: status, error: errorThrown});
             }
         });
 
+    },
 
 
-    login: (email, password, cb) => {
-      //  SDK.request({
-            console.log("Kalder funktion sdk")
-
-        }
-           data: {
+    signup: (username, password, callback) => {
+        SDK.request({
+            data: {
                 username: username,
                 password: password
             },
-
-            url: "/users/login?include=user",
+            url: "/user/signup",
             method: "POST"
         }, (err, data) => {
+            if (err) return callback(err);
 
-            //On login-error
-            if (err) return cb(err);
-
-            SDK.Storage.persist("tokenId", data.id);
-            SDK.Storage.persist("userId", data.userId);
-            SDK.Storage.persist("user", data.user);
-
-            cb(null, data);
-
+            callback(null, data);
         });
+    },
+
+    encrypt: (encrypt) => {
+        if (encrypt !== undefined && encrypt.length !== 0) {
+            const key = ['L', 'Y', 'N'];
+            let isEncrypted = "";
+            for (let i = 0; i < encrypt.length; i++) {
+                isEncrypted += (String.fromCharCode((encrypt.charAt(i)).charCodeAt(0) ^ (key[i % key.length]).charCodeAt(0)))
+            }
+            return isEncrypted;
+        } else {
+            return encrypt;
+        }
+    },
+
+    decrypt: (decrypt) => {
+        if (decrypt !== undefined && decrypt.length !== 0) {
+            const key = ['L', 'Y', 'N'];
+            let isDecrypted = "";
+            for (let i = 0; i < decrypt.length; i++) {
+                isDecrypted += (String.fromCharCode((decrypt.charAt(i)).charCodeAt(0) ^ (key[i % key.length]).charCodeAt(0)))
+            }
+            return isDecrypted;
+        } else {
+            return decrypt;
+        }
+    },
+};
