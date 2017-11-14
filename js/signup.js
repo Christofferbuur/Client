@@ -12,7 +12,12 @@ $(document).ready(() => {
         const password = $("#password").val();
         const passwordV = $("#passwordV").val();
 
+
+
         if(!username || !password || !passwordV) {
+            console.log(username)
+            console.log(password)
+            console.log(passwordV)
             alert("Username or password has not been typed. Please try again");
         } else {
             if(password.valueOf() === passwordV.valueOf()) {
@@ -28,7 +33,7 @@ $(document).ready(() => {
                         window.location.href = "login.html"
                     }
                 });
-            }else {
+            } else {
                 alert("kodeordet matcher ikke. Prøv igen");
             }
 

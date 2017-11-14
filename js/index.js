@@ -1,12 +1,14 @@
-$("#log_in").on("click", () => {
-
-    window.location.href = "login.htmll";
 
 
-}
+$("#login").on("click", () => {
 
-$("#create_user").on("click", () => {
+  window.location.href = "login.html";
 
-    window.location.href = "signup.htmll";
+});
 
-}
+$("#sign_up").on("click", () => {
+
+    window.location.href = "signup.html";
+
+});
+

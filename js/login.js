@@ -1,12 +1,15 @@
-$(document).ready(() => {
+
 
     //SDK.User.loadNav();
 
 
 //.click er et clickevent der er sat på login_button når der sker et event
-    $("#login_button").click(() => {
+    $("#return_button").click(() => {
 
-            console.log("clicked");
+        window.location.href = "index.html";
+
+    });
+
 
 
         /*const username = $("#inputUsername").val();
@@ -23,6 +26,3 @@ $(document).ready(() => {
             }
         });*/
 
-    });
-
-});
