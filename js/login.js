@@ -35,10 +35,12 @@ $(document).ready(() => {
                                 const user = SDK.currentUser();
                                 console.log(user.type)
 
-                                if (user.type == 1) {
-                                    console.log("Admin")
+                                if (user.type == 2) {
+                                    console.log("User")
+                                 window.location.href="user.html";
+
                                 } else {
-                                    window.location.href="user.html";
+                                    console.log("User")
                                 }
                             }
                         });

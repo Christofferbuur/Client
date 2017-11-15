@@ -110,21 +110,18 @@ const SDK = {
     },
 
     //meget underlig metode, men virker halvt.
-   loadNav: (call) => {
+  loadNav: (call) => {
         $("#nav-container").load("navbar.html", () => {
-            if(SDK.currentUser()) {
-                $(".navbar-right").html(`         
-          
-          `);
+            if(SDK.currentUser().id===1) {
+
+
             } else {
                 $(".navbar-right").html(`
-            <li><a href="Events"> <span class="sr-only">(currentStudent)</span></a></li>
           `);
             }
 
         });
     },
-
 
 
     encrypt: (encrypt) => {
