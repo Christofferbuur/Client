@@ -60,6 +60,8 @@ const SDK = {
             callback(null, data);
         });
     },
+
+
 //Taget direkte fra Jesper
     Storage:
         {
@@ -100,6 +102,29 @@ const SDK = {
         });
 
     },
+//bruges i login
+
+    currentUser: () => {
+        const loadedUser = SDK.Storage.load("myUser");
+        return loadedUser.currentUser;
+    },
+
+    //meget underlig metode, men virker halvt.
+   loadNav: (call) => {
+        $("#nav-container").load("navbar.html", () => {
+            if(SDK.currentUser()) {
+                $(".navbar-right").html(`         
+          
+          `);
+            } else {
+                $(".navbar-right").html(`
+            <li><a href="Events"> <span class="sr-only">(currentStudent)</span></a></li>
+          `);
+            }
+
+        });
+    },
+
 
 
     encrypt: (encrypt) => {

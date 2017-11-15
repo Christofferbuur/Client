@@ -27,10 +27,6 @@ $(document).ready(() => {
                         console.log("Fejl");
                     } else {
 
-
-
-
-
                         window.alert("Du er oprettet i systemet");
                         window.location.href = "login.html"
                     }

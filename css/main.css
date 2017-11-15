@@ -34,3 +34,9 @@ margin: 0;
     background: #c0c0c0;
 
 }
+.container-fluid{
+    background-color:#ffffff !important;
+    border-color:#ffffff !important;
+
+}
+

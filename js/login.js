@@ -29,13 +29,21 @@ $(document).ready(() => {
                         SDK.loadCurrentUser((err, data) => {
                             if (err && err.xhr.status === 401) {
                                 window.alert("Error")
-                            } else if(data == null) {
+                            } else if (data == null) {
                                 window.alert("Forkert brugernavn eller kode");
                             } else {
-                                window.location.href = "user.html"
+                                const user = SDK.currentUser();
+                                console.log(user.type)
+
+                                if (user.type == 1) {
+                                    console.log("Admin")
+                                } else {
+                                    window.location.href="user.html";
+                                }
                             }
                         });
-                    };
+                    }
+                    ;
 
 
                 });
