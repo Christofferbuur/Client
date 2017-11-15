@@ -44,29 +44,61 @@ const SDK = {
     },
 
     login: (username, password, callback) => {
-        SDK.request(
-            {
-                data:
-                    {
-                        username: username,
-                        password: password
-                    }, url: "/user/login",
-                method: "POST"
-            }, (err, data) => {
-                if (err) return callback(err);
+        SDK.request({
+            data:
+                {
+                    username: username,
+                    password: password
+                }, url: "/user/login",
+            method: "POST"
+        }, (err, data) => {
+            if (err) return callback(err);
+            console.log(data)
 
-                callback(null, data);
-                //lidt ekstra her
-            });
+            SDK.Storage.persist("Token", data);
+
+            callback(null, data);
+        });
     },
+//Taget direkte fra Jesper
+    Storage:
+        {
+            prefix: "DøkQuizSDK",
+            persist:
+                (key, value) => {
+                    window.localStorage.setItem(SDK.Storage.prefix + key, (typeof value === 'object') ? JSON.stringify(value) : value)
+                },
+            load:
+                (key) => {
+                    const val = window.localStorage.getItem(SDK.Storage.prefix + key);
+                    try {
+                        return JSON.parse(val);
+                    }
+                    catch (e) {
+                        return val;
+                    }
+                },
+            remove: (key) => {
+                window.localStorage.removeItem(SDK.Storage.prefix + key);
+            }
+
+        },
 
     loadCurrentUser: (callback) => {
         SDK.request({
             method: "GET",
             url: "/user/myuser",
-            headers: {}
+            headers: {
+                authorization: SDK.Storage.load("Token"),
+            },
+        }, (err, user) => {
+            if (err) return callback(err);
 
+            SDK.Storage.persist("myUser", user);
+
+            callback(null, user);
         });
+
     },
 
 

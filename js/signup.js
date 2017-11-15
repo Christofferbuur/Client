@@ -10,17 +10,15 @@ $(document).ready(() => {
 
         const username = $("#username").val();
         const password = $("#password").val();
-        const passwordV = $("#passwordV").val();
+        const passwordValidation = $("#passwordValidation").val();
 
-
-
-        if(!username || !password || !passwordV) {
+        if(!username || !password || !passwordValidation) {
             console.log(username)
             console.log(password)
-            console.log(passwordV)
+            console.log(passwordValidation)
             alert("Brugernavn og kodeord er ikke skrevet ind. Prøv igen");
         } else {
-            if(password.valueOf() === passwordV.valueOf()) {
+            if(password.valueOf() === passwordValidation.valueOf()) {
                 SDK.signup(username, password, (err, data) => {
                     if (err && err.xhr.status == 400) {
                         console.log("Klient fejl");
@@ -28,8 +26,12 @@ $(document).ready(() => {
                     else if (err) {
                         console.log("Fejl");
                     } else {
-                        window.alert("Du er oprettet i systemet");
 
+
+
+
+
+                        window.alert("Du er oprettet i systemet");
                         window.location.href = "login.html"
                     }
                 });

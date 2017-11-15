@@ -15,9 +15,6 @@ $(document).ready(() => {
         const username = $("#username").val();
         const password = $("#password").val();
 
-        console.log(username)
-        console.log(password)
-
         SDK.login(username, password, (err, data) => {
             if (!username || !password) {
                 window.alert("Brugernavn eller kode er ikke skrevet. Prøv igen");
@@ -29,7 +26,15 @@ $(document).ready(() => {
                         window.alert('Error')
                         log.console("Error")
                     } else {
-                        window.location.href = "user.html"
+                        SDK.loadCurrentUser((err, data) => {
+                            if (err && err.xhr.status === 401) {
+                                window.alert("Error")
+                            } else if(data == null) {
+                                window.alert("Forkert brugernavn eller kode");
+                            } else {
+                                window.location.href = "user.html"
+                            }
+                        });
                     };
 
 
