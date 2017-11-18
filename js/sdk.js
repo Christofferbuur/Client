@@ -110,21 +110,27 @@ const SDK = {
     },
 
     //meget underlig metode, men virker halvt.
-  loadNav: (call) => {
-        $("#nav-container").load("navbar.html", () => {
-            if(SDK.currentUser().id===1) {
+    loadnav: () => {
 
+            $("#nav-container").load("navbarUser.html", () => {});
 
-            } else {
-                $(".navbar-right").html(`
-          `);
-            }
-
-        });
     },
 
+//virker ikke
+    logOut: (userId, cb) => {
+        SDK.request({
+            method: "POST",
+            url: "/user/logout",
+            data: userId,
+        }, (err, data) => {
+            if (err) return cb(err);
 
-    encrypt: (encrypt) => {
+            cb(null, data);
+        });
+
+    },
+
+            encrypt: (encrypt) => {
         if (encrypt !== undefined && encrypt.length !== 0) {
             const key = ['L', 'Y', 'N'];
             let isEncrypted = "";

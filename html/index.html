@@ -5,29 +5,35 @@
     <title>Velkommen til quiz</title>
 
     <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../lib/css/bootstrap.css">
 
 </head>
 
 <body>
+<!--//måske ikke så god kodestil-->
+<style>
+    body {
+        background-color: grey;
+    }
+</style>
 
 <h1 id="lol">Velkommen til quiz</h1>
 
-<button id="login">Log ind</button>
+<div class = welcome_box>
+    <!--<button id="sign_up">Opret bruger</button>-->
 
-<button id="sign_up">Opret bruger</button>
+    <p><a class="btn btn-primary btn-lg" id="sign_up" >Opret bruger</a></p>
+   <p><a class="btn btn-primary btn-lg" id="login" >Log ind</a></p>
+</div>
 
-<div class="row">
-    <div class="col-xs-6 col-md-3">
-        <a href="#" class="thumbnail">
-            <img src="https://i.imgur.com/tPAF3F8.mp4" alt="...">
-        </a>
-    </div>
+
+
+
 
     <script src="../lib/js/jquery-3.2.1.js"></script>
     <script src="../lib/js/bootstrap.js"></script>
     <script src="../js/sdk.js"></script>
     <script src="../js/index.js"></script>
-
 
 </body>
 </html>

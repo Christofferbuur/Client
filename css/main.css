@@ -1,5 +1,6 @@
 #lol {
-    color: red;
+    color: black;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .tap_panels{
@@ -39,4 +40,28 @@ margin: 0;
     border-color:#ffffff !important;
 
 }
+#logoutButton{
+    left:1478%;
+}
+#btn{
+    left:7330%;
+    margin-top: 18px;
 
+
+}.jumbotron{
+ }
+
+
+.box{
+border-bottom-color: black;
+    width: 100%;
+    left: 25%;
+
+    position:absolute
+}
+.welcome_box{
+    left: 40%;
+    right: 50%;
+    top: 35%;
+    position:absolute
+}
