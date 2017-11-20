@@ -6,7 +6,7 @@ $(document).ready(() => {
 //.click er et clickevent der er sat på login_button når der sker et event
     $("#return_button").click(() => {
 
-        window.location.href = "indexblive.html";
+        window.location.href = "index.html";
 
     });
 

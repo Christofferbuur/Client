@@ -109,14 +109,6 @@ const SDK = {
         return loadedUser.currentUser;
     },
 
-    //meget underlig metode, men virker halvt.
-    loadnav: () => {
-
-            $("#nav-container").load("navbarUser.html", () => {});
-
-    },
-
-//virker ikke
     logOut: (userId, cb) => {
         SDK.request({
             method: "POST",

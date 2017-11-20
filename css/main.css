@@ -52,16 +52,6 @@ margin: 0;
  }
 
 
-.box{
-border-bottom-color: black;
-    width: 100%;
-    left: 25%;
-
-    position:absolute
-}
-.welcome_box{
-    left: 40%;
-    right: 50%;
-    top: 35%;
-    position:absolute
+.color_white{
+    color:gainsboro;
 }
