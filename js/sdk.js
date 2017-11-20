@@ -122,7 +122,21 @@ const SDK = {
 
     },
 
-            encrypt: (encrypt) => {
+    loadCourses: (cb) => {
+        SDK.request({
+            method: "GET",
+            url: "/course",
+            headers: {
+                authorization: SDK.Storage.load("Token"),
+            },
+        }, (err, course) => {
+            if (err) return cb(err);
+            cb(null, course)
+
+        });
+    },
+
+    encrypt: (encrypt) => {
         if (encrypt !== undefined && encrypt.length !== 0) {
             const key = ['L', 'Y', 'N'];
             let isEncrypted = "";
