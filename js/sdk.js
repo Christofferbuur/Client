@@ -155,11 +155,19 @@
     },
 
         startQuiz: (cb) => {
+            const chosenQuiz = SDK.Storage.load("chosenQuiz");
+            const quizId = chosenQuiz.quizId;
 
-
-
-
-
+SDK.request({
+    method: "GET",
+    url: "/question/" + quizId,
+    headers: {
+        authorization: SDK.Storage.load("Token"),
+    },
+}, (err, quiz) => {
+    if (err) return cb(err);
+    cb(null, quiz)
+});
         },
 
 

@@ -1,8 +1,8 @@
-#lol {
+#header {
     color: black;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-style: oblique;
 }
-
 .tap_panels{
 margin: 0;
     padding: 0;

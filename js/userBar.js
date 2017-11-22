@@ -18,4 +18,9 @@ $(document).ready(() => {
         });
 
     });
+
+const name = SDK.currentUser().username;
+
+    $(".welcomeHeader").html(`<h1 align="center">Brugernavn: ${name}</h1>`);
+
 });
