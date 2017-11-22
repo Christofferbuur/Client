@@ -1,4 +1,6 @@
-const SDK = {
+
+    const SDK = {
+
     serverURL: "http://localhost:8080/api",
 
     request: (options, callback) => {
@@ -135,6 +137,31 @@ const SDK = {
 
         });
     },
+
+    loadQuizzes: (cb) => {
+        const chosenCourse = SDK.Storage.load("chosenCourse");
+        const courseId = chosenCourse.courseId;
+
+        SDK.request({
+            method: "GET",
+            url: "/quiz/" + courseId,
+            headers: {
+               authorization: SDK.Storage.load("Token"),
+            },
+        }, (err, quiz) => {
+            if (err) return cb(err);
+            cb(null, quiz)
+        });
+    },
+
+        startQuiz: (cb) => {
+
+
+
+
+
+        },
+
 
     encrypt: (encrypt) => {
         if (encrypt !== undefined && encrypt.length !== 0) {
