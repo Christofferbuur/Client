@@ -41,13 +41,13 @@ $(document).ready(() => {
 
             function loadOptions(question) {
                 SDK.loadOptions(questions[i].questionId, (err, data) => {
-                    $(".table").append(`<h2 align="center">${question}</h2>`);
+                    $(".table").append(`<h2>${question}</h2>`);
 
                     var options = JSON.parse(data);
-                    var optionLenght = options.length;
+                    var optionLength = options.length;
 
-                    for (var k = 0; k < optionLenght; k++) {
-                        $(".table").append(`<h3>${options[k].option}</h3>`);
+                    for (var k = 0; k < optionLength; k++) {
+                        $(".table").append(`<p><input type="radio" name="option${question.questionId}"<br>  ${options[k].option} </p>`);
                     }
                 });
                 i++;

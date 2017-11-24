@@ -167,7 +167,26 @@
             });
         },
 
+        createQuiz: (createdBy, questionCount, quizTitle, quizDescription, courseId, callback) => {
+            SDK.request({
+                data: {
+                    createdBy: createdBy,
+                    questionCount: questionCount,
+                    quizTitle: quizTitle,
+                    quizDescription: quizDescription,
+                    courseId: courseId,
+                },
+                url: "/question",
+                method: "POST",
+                headers: {
+                    authorization: SDK.Storage.load("Token"),
+                }
+            }, (err, data) => {
+                if (err) return callback(err);
 
+                callback(null, data);
+            });
+        },
 
 
         startQuiz: (cb) => {
