@@ -20,19 +20,6 @@ $(document).ready(() => {
 
     });
 
-
-
-
-    /*
-    $(document).ready(() => {
-        SDK.loadQuizzes((err, quiz) => {
-            var quiz = JSON.parse(quiz.decrypt());
-            console.log(quiz);
-        });
-    });
-    */
-
-
 SDK.loadQuizzes((err, quiz) => {
     if (err) throw err;
 
@@ -48,8 +35,8 @@ SDK.loadQuizzes((err, quiz) => {
 
         $.each(quizzes, function (i, val) {
     var tr = '<tr>';
-    tr += '<td>' + quizzes[i].quizDescription + '</td>';
-            tr += '<td>' + quizzes[i].quizTitle +'</td>';
+    tr += '<td>' + quizzes[i].quizTitle + '</td>';
+            tr += '<td>' + quizzes[i].quizDescription +'</td>';
             tr += '<td>' + quizzes[i].createdBy + '</td>';tr += '<td><button class="quizButton btn btn-primary pull-left" data-key="' + (i) + '">Take quiz!</button></td>';
     tr += '</tr>';
     i + 1;
@@ -57,7 +44,7 @@ SDK.loadQuizzes((err, quiz) => {
 });
     $('button.quizButton').on('click', function () {
         console.log("1")
-        var name = $(this).closest("tr").find("td:eq(1)").text();
+        var name = $(this).closest("tr").find("td:eq(0)").text();
         console.log("2")
 
         for (var i = 0; i < quizzes.length; i++) {

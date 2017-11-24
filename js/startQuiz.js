@@ -17,34 +17,43 @@ $(document).ready(() => {
                 SDK.Storage.remove("Token")
             }
         });
-
     });
-
 
     const chosenQuiz = SDK.Storage.load("chosenQuiz");
 
-    $(".header").html(`<h1 align="center">${chosenQuiz.quizTitle}</h1>`);
+    //$(".header").html(`<h1 align="center">${chosenQuiz.quizTitle}</h1>`);
 
-    $(".header").html(`<h2 align="center">${chosenQuiz.quizDescription}</h2>`);
-
-
-  //  SDK.startQuiz((err, question) => {
-   //     const questions = JSON.parse(question);
+    // $(".header").html(`<h2 align="center">${chosenQuiz.quizDescription}</h2>`);
 
 
+    //  SDK.startQuiz((err, question) => {
+    //     const questions = JSON.parse(question);
+    i = 0;
     SDK.startQuiz((err, question) => {
+        var $table = $(".table");
         if (err) throw err;
 
         var questions = JSON.parse(question);
-        var $quizTableBody = $("#questionTableBody");
+        while (i < questions.length) {
+            var question = (questions[i].question);
 
-        $.each(questions, function (i, val) {
-            var tr = '<tr>';
-            tr += '<td>' + questions[i].question + '</td>';
-            tr += '</tr>';
-            $quizTableBody.append(tr);
-        });
+            loadOptions(question);
+
+            function loadOptions(question) {
+                SDK.loadOptions(questions[i].questionId, (err, data) => {
+                    $(".table").append(`<h2 align="center">${question}</h2>`);
+
+                    var options = JSON.parse(data);
+                    var optionLenght = options.length;
+
+                    for (var k = 0; k < optionLenght; k++) {
+                        $(".table").append(`<h3>${options[k].option}</h3>`);
+                    }
+                });
+                i++;
+            }
+        }
     });
-
 });
+
 

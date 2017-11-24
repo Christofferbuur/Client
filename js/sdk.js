@@ -154,9 +154,25 @@
         });
     },
 
+        loadOptions: (questionId, cb) => {
+            SDK.request({
+                method: "GET",
+                url: "/option/" + questionId,
+                headers: {
+                    authorization: SDK.Storage.load("Token")
+                },
+            }, (err, option) => {
+                if (err) return cb(err);
+                cb(null, option)
+            });
+        },
+
+
+
+
         startQuiz: (cb) => {
-            const chosenQuiz = SDK.Storage.load("chosenQuiz");
-            const quizId = chosenQuiz.quizId;
+ const chosenQuiz = SDK.Storage.load("chosenQuiz");
+ const quizId = chosenQuiz.quizId;
 
 SDK.request({
     method: "GET",
