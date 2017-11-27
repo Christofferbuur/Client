@@ -34,7 +34,6 @@ $(document).ready(() => {
             const createdBy = username;
             const quizTitle = $("#quizTitle").val();
             //window.location.href = "user.html";
-
         });
     });
 

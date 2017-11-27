@@ -37,8 +37,11 @@ SDK.loadQuizzes((err, quiz) => {
     var tr = '<tr>';
     tr += '<td>' + quizzes[i].quizTitle + '</td>';
             tr += '<td>' + quizzes[i].quizDescription +'</td>';
-            tr += '<td>' + quizzes[i].createdBy + '</td>';tr += '<td><button class="quizButton btn btn-primary pull-left" data-key="' + (i) + '">Take quiz!</button></td>';
-    tr += '</tr>';
+            tr += '<td>' + quizzes[i].createdBy + '</td>';
+            tr += '<td><button class="quizButton btn btn-primary pull-left" data-key="' + (i) + '">Start quiz</button></td>';
+            tr += '<td><button class="deleteButton btn btn-primary pull-left" data-key="' + (i) + '">Slet</button></td>';
+
+            tr += '</tr>';
     i + 1;
     $quizTableBody.append(tr);
 });
@@ -60,6 +63,21 @@ SDK.loadQuizzes((err, quiz) => {
         }
     });
 
+    $('button.deleteButton').on('click', function () {
+        var name = $(this).closest("tr").find("td:eq(0)").text();
+
+        for (var i = 0; i < quizzes.length; i++) {
+            if (name === quizzes[i].quizTitle) {
+                SDK.Storage.persist("chosenQuiz", quizzes[i]);
+                console.log(quizzes[i]);
+            }
+        };
+        //Rykker udenfor for loopet, ellers vil du have den til at delete request xO kantaayl gange
+        SDK.deleteQuiz((err, data) => {
+            //så sinds Andy? hvad Du skal lige se noget underligt
+            location.reload();
+        })
+    });
 });
 
 

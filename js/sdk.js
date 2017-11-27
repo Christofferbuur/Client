@@ -29,7 +29,7 @@
 
     },
 
-
+//hvad er rpoblemet haha
     signup: (username, password, callback) => {
         SDK.request({
             data: {
@@ -123,8 +123,7 @@
         });
 
     },
-
-    loadCourses: (cb) => {
+    loadQuizzes: (cb) => {
         SDK.request({
             method: "GET",
             url: "/course",
@@ -154,6 +153,20 @@
         });
     },
 
+        loadCourses: (cb) => {
+            SDK.request({
+                method: "GET",
+                url: "/course",
+                headers: {
+                    authorization: SDK.Storage.load("Token"),
+                },
+            }, (err, course) => {
+                if (err) return cb(err);
+                cb(null, course)
+
+            });
+        },
+
         loadOptions: (questionId, cb) => {
             SDK.request({
                 method: "GET",
@@ -163,7 +176,7 @@
                 },
             }, (err, option) => {
                 if (err) return cb(err);
-                cb(null, option)
+                cb (null, option);
             });
         },
 
@@ -187,7 +200,22 @@
                 callback(null, data);
             });
         },
+        deleteQuiz: (cb) => {
+            const chosenQuiz = SDK.Storage.load("chosenQuiz")
+            const quizId = chosenQuiz.quizId;
+            console.log(quizId);
+            SDK.request({
+                method: "DELETE",
+                url: "/quiz/" + quizId,
+                headers: {
+                    authorization: SDK.Storage.load("Token")
+                },
+            }, (err, data) => {
+                if (err) return cb(err);
+                cb(null, data)
+            });
 
+        },
 
         startQuiz: (cb) => {
  const chosenQuiz = SDK.Storage.load("chosenQuiz");
@@ -205,8 +233,7 @@ SDK.request({
 });
         },
 
-
-    encrypt: (encrypt) => {
+        encrypt: (encrypt) => {
         if (encrypt !== undefined && encrypt.length !== 0) {
             const key = ['L', 'Y', 'N'];
             let isEncrypted = "";

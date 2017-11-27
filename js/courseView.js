@@ -23,7 +23,7 @@ $(document).ready(() => {
 
     });
 
-
+//funktionen findes ikke i SDK Arh Jeg slettede den jo .. 2 sek men wtf. Der stod den ikek blev brugt haha Eller vent.
 SDK.loadCourses((err, course) => {
     if (err) throw err;
 console.log("1")
