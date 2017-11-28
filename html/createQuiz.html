@@ -19,8 +19,6 @@
         </div>
         </div>
 
-<div class="form-group">
-    <label for="selectCourse" class="col-lg-2 control-label">Selects</label>
     <div class="col-lg-10">
         <select class="form-control" id="selectCourse">
         </select>
@@ -31,12 +29,55 @@
 
 
     <div class="form-group">
-            <input type="quizDescription" class="form-control" id="quizTitle" placeholder="Beskrivelse">
-        </div>
-
+        <input type="quizTitle" class="form-control" id="quizTitle" placeholder="Titel på quiz">
+</div>
+<div class="form-group">
+    <input type="quizDescription" class="form-control" id="quizDescription" placeholder="Beskrivelse">
+</div>
 
         <button class="btn btn-primary btn-lg" id="return_button">Tilbage</button>
         <button class="btn btn-primary btn-lg" id="create_button">Opret quiz</button>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="modal fade bd-example-modal-lg" id="questionModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h1 class="modal-title"></h1>
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <label class="control-label" for="question">Question</label>
+                            <textarea type="textarea" class="form-control" id="question" placeholder="Question"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="correct">Correct answer</label>
+                            <input type="text" class="form-control" id="correct" placeholder="Correct answer">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="wrong1">Wrong answer</label>
+                            <input type="text" class="form-control" id="wrong1" placeholder="Wrong answer 1">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="wrong2">Wrong answer</label>
+                            <input type="text" class="form-control" id="wrong2" placeholder="Wrong answer 2">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="wrong3">Wrong answer</label>
+                            <input type="text" class="form-control" id="wrong3" placeholder="Wrong answer 3">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-default" id="addQuestionBtn">+ Add question</button>
+                        <button class="btn btn-default" id="saveQuizBtn">Finish quiz!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

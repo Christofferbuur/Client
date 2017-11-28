@@ -50,35 +50,30 @@ $(document).ready(() => {
                         let optionsToQId= options[k].optionToQuestionId;
                         //Use the questionId as a group unique group for radiobuttons, so grouping is possible
                         //For every question there will be added unique radiobuttons
-                        $(".table").append(`<fieldset id="group${optionsToQId}"><p><input type="radio" name="group${optionsToQId}"<br>  ${options[k].option} </p></fieldset>`);
+                        $(".table").append(`<fieldset id="group${optionsToQId}"><p><input type="radio" name="group${optionsToQId}" class="answer-radio" value="${options[k].isCorrect}"> ${options[k].option} </p></fieldset>`);
                     }
                 });
-                i++;
-                $("#submit").click(() => {
-                    console.log("hey");
-                    var amountCorrect = 0;
-                    for (var i = 0; i <= questions.length; i++) {
-                        var radios = document.getElementsByName('group' + i);
-                        console.log(radios);
 
-
-                        SDK.loadOptions(questions[i].questionId, (err, data) => {
-                            var options = JSON.parse(data);
-
-                            for (var j = 0; j < radios.length; j++) {
-
-                                var radio = radios[j];
-                                if (radio.value === options.isCorrect  && radio.checked) {
-                                    amountCorrect++;
-                                    //Kan ikek få fat på options.isCorrect.
-                                }
-                            }
-                        });
-                        console.log("Antal korrekte svar: " + amountCorrect);
-                    }
-                });
             }
+            i++;
         }
+        // husk at ændre
+        $("#submit").click(() => {
+
+            let Answers = 0;
+            let correctAnswers = 0;
+
+            $(".answer-radio").each(function () {
+                if ($(this).is(":checked")) {
+                    Answers++;
+                    if ($(this).val() == 1) {
+                        correctAnswers++;
+                    }
+                }
+            });
+            window.alert(correctAnswers+" of "+Answers);
+        });
+
     });
 });
 

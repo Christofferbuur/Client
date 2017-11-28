@@ -62,7 +62,6 @@ SDK.loadQuizzes((err, quiz) => {
             }
         }
     });
-
     $('button.deleteButton').on('click', function () {
         var name = $(this).closest("tr").find("td:eq(0)").text();
 

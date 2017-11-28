@@ -1,5 +1,4 @@
-
-    const SDK = {
+const SDK = {
 
     serverURL: "http://localhost:8080/api",
 
@@ -29,7 +28,6 @@
 
     },
 
-//hvad er rpoblemet haha
     signup: (username, password, callback) => {
         SDK.request({
             data: {
@@ -145,7 +143,7 @@
             method: "GET",
             url: "/quiz/" + courseId,
             headers: {
-               authorization: SDK.Storage.load("Token"),
+                authorization: SDK.Storage.load("Token"),
             },
         }, (err, quiz) => {
             if (err) return cb(err);
@@ -153,87 +151,123 @@
         });
     },
 
-        loadCourses: (cb) => {
-            SDK.request({
-                method: "GET",
-                url: "/course",
-                headers: {
-                    authorization: SDK.Storage.load("Token"),
-                },
-            }, (err, course) => {
-                if (err) return cb(err);
-                cb(null, course)
+    loadCourses: (cb) => {
+        SDK.request({
+            method: "GET",
+            url: "/course",
+            headers: {
+                authorization: SDK.Storage.load("Token"),
+            },
+        }, (err, course) => {
+            if (err) return cb(err);
+            cb(null, course)
 
-            });
-        },
-
-        loadOptions: (questionId, cb) => {
-            SDK.request({
-                method: "GET",
-                url: "/option/" + questionId,
-                headers: {
-                    authorization: SDK.Storage.load("Token")
-                },
-            }, (err, option) => {
-                if (err) return cb(err);
-                cb (null, option);
-            });
-        },
-
-        createQuiz: (createdBy, questionCount, quizTitle, quizDescription, courseId, callback) => {
-            SDK.request({
-                data: {
-                    createdBy: createdBy,
-                    questionCount: questionCount,
-                    quizTitle: quizTitle,
-                    quizDescription: quizDescription,
-                    courseId: courseId,
-                },
-                url: "/question",
-                method: "POST",
-                headers: {
-                    authorization: SDK.Storage.load("Token"),
-                }
-            }, (err, data) => {
-                if (err) return callback(err);
-
-                callback(null, data);
-            });
-        },
-        deleteQuiz: (cb) => {
-            const chosenQuiz = SDK.Storage.load("chosenQuiz")
-            const quizId = chosenQuiz.quizId;
-            console.log(quizId);
-            SDK.request({
-                method: "DELETE",
-                url: "/quiz/" + quizId,
-                headers: {
-                    authorization: SDK.Storage.load("Token")
-                },
-            }, (err, data) => {
-                if (err) return cb(err);
-                cb(null, data)
-            });
-
-        },
-
-        startQuiz: (cb) => {
- const chosenQuiz = SDK.Storage.load("chosenQuiz");
- const quizId = chosenQuiz.quizId;
-
-SDK.request({
-    method: "GET",
-    url: "/question/" + quizId,
-    headers: {
-        authorization: SDK.Storage.load("Token"),
+        });
     },
-}, (err, quiz) => {
-    if (err) return cb(err);
-    cb(null, quiz)
-});
-        },
 
-        encrypt: (encrypt) => {
+    loadOptions: (questionId, cb) => {
+        SDK.request({
+            method: "GET",
+            url: "/option/" + questionId,
+            headers: {
+                authorization: SDK.Storage.load("Token")
+            },
+        }, (err, option) => {
+            if (err) return cb(err);
+            cb(null, option);
+        });
+    },
+
+    createQuiz: (createdBy, quizTitle, quizDescription, courseId, questionCount, cb) => {
+        SDK.request({
+            data: {
+                createdBy: createdBy,
+                quizTitle: quizTitle,
+                quizDescription: quizDescription,
+                courseId: courseId,
+                questionCount: questionCount,
+            },
+            url: "/quiz/",
+            method: "POST",
+            headers: {
+                authorization: SDK.Storage.load("Token"),
+            }
+        }, (err, data) => {
+            if (err) return cb(err);
+            cb(null, data);
+        });
+    },
+    deleteQuiz: (cb) => {
+        const chosenQuiz = SDK.Storage.load("chosenQuiz")
+        const quizId = chosenQuiz.quizId;
+        console.log(quizId);
+        SDK.request({
+            method: "DELETE",
+            url: "/quiz/" + quizId,
+            headers: {
+                authorization: SDK.Storage.load("Token")
+            },
+        }, (err, data) => {
+            if (err) return cb(err);
+            cb(null, data)
+        });
+
+    },
+
+    startQuiz: (cb) => {
+        const chosenQuiz = SDK.Storage.load("chosenQuiz");
+        const quizId = chosenQuiz.quizId;
+
+        SDK.request({
+            method: "GET",
+            url: "/question/" + quizId,
+            headers: {
+                authorization: SDK.Storage.load("Token"),
+            },
+        }, (err, quiz) => {
+            if (err) return cb(err);
+            cb(null, quiz)
+        });
+    },
+    createQuestion: (question, quizId, callback) => {
+        console.log(question);
+        console.log(quizId);
+
+        SDK.request({
+            data: {
+                question: question,
+                questionToQuizId: quizId
+            },
+            method: "POST",
+            url: "/question",
+            headers: {
+                authorization: SDK.Storage.load("Token"),
+            }
+        }, (err, data) => {
+            if (err) return callback(err);
+            callback(null, data);
+        })
+    },
+
+    createOption: (option, optionToQuestionId, isCorrect, cb) => {
+        SDK.request({
+            data: {
+                option: option,
+                optionToQuestionId: optionToQuestionId,
+                isCorrect: isCorrect
+            },
+            method: "POST",
+            url: "/option",
+            headers: {
+                authorization: SDK.Storage.load("Token"),
+            }
+        }, (err, data) => {
+            if (err) return cb(err);
+            cb(null, data);
+        })
+    },
+
+    encrypt: (encrypt) => {
         if (encrypt !== undefined && encrypt.length !== 0) {
             const key = ['L', 'Y', 'N'];
             let isEncrypted = "";
