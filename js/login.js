@@ -18,6 +18,7 @@ $(document).ready(() => {
         //Du logger ind to gange, hvorfor databasen får tokens, kæmpe fejl.
         //1
         SDK.login(username, password, (err, data) => {
+            debugger
             if (!username || !password) {
                 window.alert("Brugernavn eller kode er ikke skrevet. Prøv igen");
             } else {

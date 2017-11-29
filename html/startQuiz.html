@@ -39,9 +39,49 @@
 
 
 <li><a id="submit">Se Resultat</a></li>
-<li><span class="glyphicon glyphicon-log-in" id="resultBtn"></span></li>
+
+<li><a id="resultBtn">Se korrekte svar</a></li>
+
 
 <table id="optionBody"></table>
+
+
+<div class="container">
+    <div class="modal fade bd-example-modal-lg" id="submitModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h1>Your answers</h1>
+                    <div class="modal-body">
+                        <p id="result"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="closeBtn btn btn-default" id="closeBtn">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="modal fade bd-example-modal-lg" id="resultModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1>Korrekt svar</h1>
+                    <div class="modal-body" id="resultDIV">
+                        <table id="resultT"></table>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="closeBtn btn btn-default" id="closeResBtn">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <script src="../lib/js/jquery-3.2.1.js"></script>

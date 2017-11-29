@@ -71,10 +71,48 @@ $(document).ready(() => {
                     }
                 }
             });
-            window.alert(correctAnswers+" of "+Answers);
+
+            //Shows modal and score
+            $('#submitModal').modal('show');
+            $("#result").append(`<p>You got <b>${correctAnswers}</b> out of <b>${Answers}</b> questions correct.</p>`);
+
+            $("#closeBtn").on("click", () => {
+                $("#result").html("");
+                $('#submitModal').modal('hide');
+            });
+
+//Listener on resultBtn
+            $("#resultBtn").on("click", () => {
+                $('#resultModal').modal('show');
+//appends question to resultDIV
+                questions.forEach((question) => {
+                    $('#resultDIV').append(`<div id=res${question.questionId}><p><b>${question.question}</b></p></div>`);
+//appends correct option to question
+                    SDK.loadOptions(question.questionId, (err, data) => {
+                        var options = JSON.parse(data);
+                        for(let i = 0; i < options.length; i++) {
+                            if(options[i].isCorrect==1) {
+                                $(`#res${question.questionId}`).append(`<p>Correct answer: ${options[i].option} </p>`);
+                            }
+                        }
+                    });
+                });
+
+                //closes the modal
+
+                $("#closeResBtn").on("click", () => {
+                    $("#resultDIV").html("");
+                    $('#resultModal').modal('hide');
+                });
+            });
+
         });
 
+        });
+
+
+
     });
-});
+
 
 

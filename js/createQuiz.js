@@ -130,29 +130,16 @@ $(document).ready(() => {
                 });
                 $("#saveQuizBtn").click(() => {
                     if (window.confirm("Is this quiz done?")) {
-                        window.location.href = "adminQuiz.html"
+                        window.location.href = "admin.html"
                     }
             });
         });
     });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     $("#return_button").on("click", () => {
         window.location.href = "user.html";
     });
+
 
 
 
