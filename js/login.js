@@ -18,7 +18,6 @@ $(document).ready(() => {
         //Du logger ind to gange, hvorfor databasen får tokens, kæmpe fejl.
         //1
         SDK.login(username, password, (err, data) => {
-            debugger
             if (!username || !password) {
                 window.alert("Brugernavn eller kode er ikke skrevet. Prøv igen");
             } else {
@@ -58,17 +57,4 @@ $(document).ready(() => {
         });
     });
 });
-/*const username = $("#inputUsername").val();
-const password = $("#inputPassword").val();
-
-SDK.User.login(email, password, (err, data) => {
-    if (err && err.xhr.status === 401) {
-        $(".form-group").addClass("has-error");
-    }
-    else if (err) {
-        console.log("BAd stuff happened")
-    } else {
-        window.location.href = "my-page.html";
-    }
-});*/
 

@@ -5,13 +5,13 @@ $(document).ready(() => {
         window.location.href = "index.html";
 
     });
-
+//creates constants with value from html
     $("#create_button").on("click", () => {
 
         const username = $("#username").val();
         const password = $("#password").val();
         const passwordValidation = $("#passwordValidation").val();
-
+//checks for input
         if(!username || !password || !passwordValidation) {
             console.log(username)
             console.log(password)

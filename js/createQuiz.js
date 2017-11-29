@@ -19,6 +19,7 @@ $(document).ready(() => {
 
         $("#create_button").on("click", () => {
             const username = SDK.currentUser().username;
+            //lavet dobbelt?
             var courses = JSON.parse(courseToChoose);
 
             var selectCourse = $("#selectCourse").val();

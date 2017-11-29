@@ -1,5 +1,6 @@
 const SDK = {
 
+    //server URL
     serverURL: "http://localhost:8080/api",
 
     request: (options, callback) => {
@@ -10,7 +11,7 @@ const SDK = {
                 headers[h] = (typeof options.headers[h] === 'object') ? JSON.stringify(options.headers[h]) : options.headers[h];
             });
         }
-
+        //Asynchronous call to server
         $.ajax({
             url: SDK.serverURL + options.url,
             method: options.method,
@@ -28,6 +29,7 @@ const SDK = {
 
     },
 
+    //request for signup
     signup: (username, password, callback) => {
         SDK.request({
             data: {
@@ -43,6 +45,7 @@ const SDK = {
         });
     },
 
+    //request for login
     login: (username, password, callback) => {
         SDK.request({
             data:
@@ -62,14 +65,17 @@ const SDK = {
     },
 
 
-//Taget direkte fra Jesper
+//Storage function
     Storage:
         {
             prefix: "DøkQuizSDK",
+            //saving in local storage
             persist:
                 (key, value) => {
                     window.localStorage.setItem(SDK.Storage.prefix + key, (typeof value === 'object') ? JSON.stringify(value) : value)
                 },
+
+            //method for loading data fra local storage
             load:
                 (key) => {
                     const val = window.localStorage.getItem(SDK.Storage.prefix + key);
@@ -80,12 +86,14 @@ const SDK = {
                         return val;
                     }
                 },
+            //method for removing data from local storage
             remove: (key) => {
                 window.localStorage.removeItem(SDK.Storage.prefix + key);
             }
 
         },
 
+    //request to load current user
     loadCurrentUser: (callback) => {
         SDK.request({
             method: "GET",
@@ -102,13 +110,14 @@ const SDK = {
         });
 
     },
-//bruges i login
 
+//method to return current user
     currentUser: () => {
         const loadedUser = SDK.Storage.load("myUser");
         return loadedUser.currentUser;
     },
 
+    //request to logout
     logOut: (userId, cb) => {
         SDK.request({
             method: "POST",
@@ -121,20 +130,8 @@ const SDK = {
         });
 
     },
-    loadQuizzes: (cb) => {
-        SDK.request({
-            method: "GET",
-            url: "/course",
-            headers: {
-                authorization: SDK.Storage.load("Token"),
-            },
-        }, (err, course) => {
-            if (err) return cb(err);
-            cb(null, course)
 
-        });
-    },
-
+    //method to load quizzes
     loadQuizzes: (cb) => {
         const chosenCourse = SDK.Storage.load("chosenCourse");
         const courseId = chosenCourse.courseId;
@@ -150,7 +147,7 @@ const SDK = {
             cb(null, quiz)
         });
     },
-
+//method to load courses
     loadCourses: (cb) => {
         SDK.request({
             method: "GET",
@@ -165,6 +162,7 @@ const SDK = {
         });
     },
 
+    //loading options
     loadOptions: (questionId, cb) => {
         SDK.request({
             method: "GET",
@@ -178,6 +176,7 @@ const SDK = {
         });
     },
 
+//create a quiz
     createQuiz: (createdBy, quizTitle, quizDescription, courseId, questionCount, cb) => {
         SDK.request({
             data: {
@@ -197,6 +196,8 @@ const SDK = {
             cb(null, data);
         });
     },
+
+    //delete a quiz
     deleteQuiz: (cb) => {
         const chosenQuiz = SDK.Storage.load("chosenQuiz")
         const quizId = chosenQuiz.quizId;
@@ -213,7 +214,7 @@ const SDK = {
         });
 
     },
-
+//method to start a quiz
     startQuiz: (cb) => {
         const chosenQuiz = SDK.Storage.load("chosenQuiz");
         const quizId = chosenQuiz.quizId;
@@ -229,6 +230,8 @@ const SDK = {
             cb(null, quiz)
         });
     },
+
+    //create a question
     createQuestion: (question, quizId, callback) => {
         console.log(question);
         console.log(quizId);
@@ -249,6 +252,7 @@ const SDK = {
         })
     },
 
+    //method for creating a option
     createOption: (option, optionToQuestionId, isCorrect, cb) => {
         SDK.request({
             data: {
@@ -267,6 +271,8 @@ const SDK = {
         })
     },
 
+
+//encrypts data to server
     encrypt: (encrypt) => {
         if (encrypt !== undefined && encrypt.length !== 0) {
             const key = ['L', 'Y', 'N'];
@@ -279,7 +285,7 @@ const SDK = {
             return encrypt;
         }
     },
-
+//decrypts data from server
     decrypt: (decrypt) => {
         if (decrypt !== undefined && decrypt.length !== 0) {
             const key = ['L', 'Y', 'N'];

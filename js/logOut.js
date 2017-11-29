@@ -16,6 +16,10 @@ $("#logoutButton").click(() => {
             SDK.Storage.remove("myUser")
             SDK.Storage.remove("User")
             SDK.Storage.remove("Token")
+            SDK.Storage.remove("chosenCourse")
+            SDK.Storage.remove("chosenQuiz")
+
+
         }
     });
 

@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
     <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../js/userBar.js">
     <link rel="stylesheet" href="../lib/css/bootstrap.css">
 
+    <meta charset="UTF-8">
+    <title>Title</title>
 
 </head>
 <body>
@@ -19,12 +18,14 @@
         </div>
         <ul class="nav navbar-nav">
 
-            <li><a href="user.html"><span class="glyphicon glyphicon-user"></span> Hjem</a></li>
-            <li><a href="courseView.html">Fag</a></li>
+            <li><a href="user.html"><span class="glyphicon glyphicon-user"></span> Se profil</a></li>
+
+            <li><a href="courseView.html">Se quiz</a></li>
+            <li><a href="createQuiz.html" id="createQuiz">Opret quiz</a></li>
+
 
 
             <ul class ="nav navbar-nav navbar-right">
-                //hvorfor href??
                 <li><a id="logoutButton">Logud</a></li>
                 <li><span class="glyphicon glyphicon-log-in" id="btn"></span></li>
             </ul>
@@ -32,30 +33,17 @@
         </ul>
     </div>
 </nav>
-<!--Viser hvor nav-container fra navbar skal implementeres.-->
-<!--<div id="nav-container"></div>-->
-
 
 <h1 class = welcomeHeader id="header"></h1>
-
-
-<li><a href="createQuiz.html">Opret quiz</a></li>
-
 
 
 <script src="../js/sdk.js"></script>
 <script src="../lib/js/jquery-3.2.1.js"></script>
 <script src="../js/logOut.js"></script>
-
 <script src="../lib/js/bootstrap.js"></script>
-
 <script src="../js/login.js"></script>
-<script src="../js/userBar.js"></script>
+<script src="../js/user.js"></script>
 
 </body>
-<script src="../js/sdk.js"></script>
-
-
-<!--<script> SDK.loadnavbarUser()</script>-->
 
 </html>

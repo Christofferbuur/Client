@@ -3,6 +3,15 @@
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-style: oblique;
 }
+
+body {
+    background-color:ghostwhite!important;
+}
+
+.title{
+    color:lightblue;
+}
+
 .tap_panels{
 margin: 0;
     padding: 0;
@@ -36,15 +45,14 @@ margin: 0;
 
 }
 .container-fluid{
-    background-color:#ffffff !important;
+    background-color: lightblue !important;
     border-color:#ffffff !important;
-
 }
 #logoutButton{
-    left:1478%;
+    left:1178%;
 }
 #btn{
-    left:7330%;
+    left:5800%;
     margin-top: 18px;
 
 

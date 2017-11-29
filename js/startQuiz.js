@@ -12,22 +12,13 @@ $(document).ready(() => {
                 //Token bliver fjernet fra db, samtidig med at man nulstiller localstorage.
                 //Skifter samtidig vindue
                 window.location.href = "index.html";
-                SDK.Storage.remove("myUser")
-                SDK.Storage.remove("User")
-                SDK.Storage.remove("Token")
+
             }
         });
     });
 
     const chosenQuiz = SDK.Storage.load("chosenQuiz");
 
-    //$(".header").html(`<h1 align="center">${chosenQuiz.quizTitle}</h1>`);
-
-    // $(".header").html(`<h2 align="center">${chosenQuiz.quizDescription}</h2>`);
-
-
-    //  SDK.startQuiz((err, question) => {
-    //     const questions = JSON.parse(question);
     var i = 0;
     SDK.startQuiz((err, question) => {
         var $table = $(".table");
@@ -41,10 +32,13 @@ $(document).ready(() => {
 
             function loadOptions(question) {
                 SDK.loadOptions(questions[i].questionId, (err, option) => {
-                    let z = 0;
                     let options = JSON.parse(option);
+                    //randomize options
+                    options = shuffle(options);
+
                     $(".table").append(`<h2>${question}</h2>`);
                     var optionLength = options.length;
+
                     for (var k = 0; k < optionLength; k++) {
                         //Use the option to find the questionId
                         let optionsToQId= options[k].optionToQuestionId;
@@ -81,13 +75,13 @@ $(document).ready(() => {
                 $('#submitModal').modal('hide');
             });
 
-//Listener on resultBtn
+            //Listener on resultBtn
             $("#resultBtn").on("click", () => {
                 $('#resultModal').modal('show');
-//appends question to resultDIV
+                //appends question to resultDIV
                 questions.forEach((question) => {
                     $('#resultDIV').append(`<div id=res${question.questionId}><p><b>${question.question}</b></p></div>`);
-//appends correct option to question
+                    //appends correct option to question
                     SDK.loadOptions(question.questionId, (err, data) => {
                         var options = JSON.parse(data);
                         for(let i = 0; i < options.length; i++) {
@@ -99,7 +93,6 @@ $(document).ready(() => {
                 });
 
                 //closes the modal
-
                 $("#closeResBtn").on("click", () => {
                     $("#resultDIV").html("");
                     $('#resultModal').modal('hide');
@@ -108,11 +101,28 @@ $(document).ready(() => {
 
         });
 
-        });
-
-
-
     });
+    //Function shuffles array options
+    //https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+    function shuffle(array) {
+        var currentIndex = array.length, temporaryValue, randomIndex;
+
+        // While there remain elements to shuffle...
+        while (0 !== currentIndex) {
+
+            // Pick a remaining element...
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+
+            // And swap it with the current element.
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+        return array;
+    }
+
+});
 
 
 
