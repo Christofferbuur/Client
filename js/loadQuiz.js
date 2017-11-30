@@ -1,23 +1,5 @@
 $(document).ready(() => {
 
-
-    $("#logoutButton").click(() => {
-        //SDK request til server to log out
-        SDK.logOut(userId, (err, data) => {
-
-            if (err && err.xhr.status === 401) {
-                console.log("Error")
-            } else {
-                //clearing local storage
-                window.location.href = "index.html";
-                SDK.Storage.remove("myUser")
-                SDK.Storage.remove("User")
-                SDK.Storage.remove("Token")
-            }
-        });
-
-    });
-
 SDK.loadQuizzes((err, quiz) => {
     if (err) throw err;
 

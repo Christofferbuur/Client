@@ -1,22 +1,5 @@
 $(document).ready(() => {
 
-
-    //Logger ind
-    $("#logoutButton").click(() => {
-        //SDK request til serveren om at logge ud
-        SDK.logOut(userId, (err, data) => {
-
-            if (err && err.xhr.status === 401) {
-                console.log("Error")
-            } else {
-                //Token bliver fjernet fra db, samtidig med at man nulstiller localstorage.
-                //Skifter samtidig vindue
-                window.location.href = "index.html";
-
-            }
-        });
-    });
-
     const chosenQuiz = SDK.Storage.load("chosenQuiz");
 
     var i = 0;
