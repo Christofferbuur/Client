@@ -18,6 +18,7 @@ $(document).ready(() => {
             console.log(passwordValidation)
             alert("Brugernavn og kodeord er ikke skrevet ind. Prøv igen");
         } else {
+            //verifies password match
             if(password.valueOf() === passwordValidation.valueOf()) {
                 SDK.signup(username, password, (err, data) => {
                     if (err && err.xhr.status == 400) {

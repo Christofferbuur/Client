@@ -1,10 +1,11 @@
 
+//sets current users Id
 const userId = SDK.currentUser().userId;
 
-//Logger ind
+//reaction to click
 $("#logoutButton").click(() => {
    // window.location.href = "index.html";
-    //SDK request til serveren om at logge ud
+    //SDK request log out
     SDK.logOut(userId, (err, data) => {
 
         if(err && err.xhr.status === 401) {
