@@ -9,7 +9,7 @@ SDK.loadCourses((err, course) => {
     if (err) throw err;
     var courses = JSON.parse(course);
 
-    //gemmer html elementet # pga defineret ved id som courseTableBody
+//saves html element in vaiable
     var $courseTableBody = $("#courseTableBody");
 
     $.each(courses, function (i) {

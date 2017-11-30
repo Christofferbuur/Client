@@ -9,19 +9,18 @@ $(document).ready(() => {
         window.location.href = "index.html";
 
     });
-
+//reacts on click
     $("#login_button").click(() => {
-
+//saves input
         const username = $("#username").val();
         const password = $("#password").val();
 
-        //Du logger ind to gange, hvorfor databasen får tokens, kæmpe fejl.
-        //1
         SDK.login(username, password, (err, data) => {
+            //verifies that the above input is not empty
             if (!username || !password) {
                 window.alert("Brugernavn eller kode er ikke skrevet. Prøv igen");
             } else {
-                //2
+                //Request to log in
                 SDK.login(username, password, (err, data) => {
                     if (err && err.xhr.status === 401) {
                         window.alert("Forkert brugernavn eller kode");
@@ -29,17 +28,17 @@ $(document).ready(() => {
                         window.alert('Error')
                     
                     } else {
+                        //request to current user
                         SDK.loadCurrentUser((err, data) => {
                             if (err && err.xhr.status === 401) {
                                 window.alert("Error")
                             } else if (data == null) {
                                 window.alert("Forkert brugernavn eller kode");
                             } else {
+                                //constant for user object to verify type
                                 const user = SDK.currentUser();
-                                console.log(user.type)
 
                                 if (user.type == 2) {
-                                    console.log("User")
                                  window.location.href="user.html";
 
                                 } else {

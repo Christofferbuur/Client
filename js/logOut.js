@@ -10,9 +10,8 @@ $("#logoutButton").click(() => {
         if(err && err.xhr.status === 401) {
             console.log("Error")
         } else {
-            //Token bliver fjernet fra db, samtidig med at man nulstiller localstorage.
-            //Skifter samtidig vindue
-            window.location.href = "index.html";
+//changes window and clears local storage
+           window.location.href = "index.html";
             SDK.Storage.remove("myUser")
             SDK.Storage.remove("User")
             SDK.Storage.remove("Token")
