@@ -3,6 +3,13 @@ $(document).ready(() => {
 //Request to load courses
 SDK.loadCourses((err, course) => {
     if (err) throw err;
+
+    $("#tablehead").append("<thead>\n" +
+        "            <th><h1>Fag</h1></th>\n" +
+        "            <th></th>\n" +
+
+        "            </thead>")
+
     var courses = JSON.parse(course);
 
 //saves html element in vaiable
@@ -12,7 +19,7 @@ SDK.loadCourses((err, course) => {
     $.each(courses, function (i) {
         var tr = '<tr>';
         tr += '<td >' + courses[i].courseTitle + '</td>';
-        tr += '<td> <button class="courseButton btn btn-primary pull-left" data-key="' + (i + 1) + '">Se quiz</button></td>';
+        tr += '<td> <button class="courseButton btn btn-primary pull-left" data-key="' + (i + 1) + '">Vælg fag</button></td>';
         tr += '</tr>';
         //appends table to courseTableBody
         $courseTableBody.append(tr);

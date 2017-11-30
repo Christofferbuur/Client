@@ -1,23 +1,27 @@
 $(document).ready(() => {
 
+    //request to load quizzes
 SDK.loadQuizzes((err, quiz) => {
     if (err) throw err;
 
     $("#tablehead").append("<thead>\n" +
-        "            <th>Quiz Title</th>\n" +
-        "            <th>Quiz Description</th>\n" +
-        "            <th>Created by</th>\n" +
+        "            <th>Quiz titel</th>\n" +
+        "            <th>Quiz beskrivelse</th>\n" +
+        "            <th>Oprettet af</th>\n" +
+        "            <th></th>\n" +
+        "            <th></th>\n" +
 
         "            </thead>")
 
     var quizzes = JSON.parse(quiz);
     var $quizTableBody = $("#quizTableBody");
 
+    //current user
     const user = SDK.currentUser();
-    console.log(user.type)
+    const userType = user.type;
     // if loop manages currentuser
 //includes delete button and appends to HTML
-    if (user.type === 1) {
+    if (userType === 1) {
         $.each(quizzes, function (i, val) {
             var tr = '<tr>';
             tr += '<td>' + quizzes[i].quizTitle + '</td>';
@@ -46,7 +50,6 @@ SDK.loadQuizzes((err, quiz) => {
     }
 
 
-
 //Takes the 0 value of the table, saves as name
     $('button.quizButton').on('click', function () {
         var name = $(this).closest("tr").find("td:eq(0)").text();
@@ -62,7 +65,7 @@ SDK.loadQuizzes((err, quiz) => {
         }
     });
 
-    //deletes the 0 value of the table
+    //deletes quiz the 0 value name of the table
     $('button.deleteButton').on('click', function () {
         var name = $(this).closest("tr").find("td:eq(0)").text();
 
@@ -72,6 +75,7 @@ SDK.loadQuizzes((err, quiz) => {
                 console.log(quizzes[i]);
             }
         };
+        //request to delete quiz
         SDK.deleteQuiz((err, data) => {
             location.reload();
         })
