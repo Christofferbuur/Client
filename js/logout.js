@@ -18,8 +18,6 @@ $("#logoutButton").click(() => {
             SDK.Storage.remove("Token")
             SDK.Storage.remove("chosenCourse")
             SDK.Storage.remove("chosenQuiz")
-
-
         }
     });
 

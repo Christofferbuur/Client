@@ -76,9 +76,6 @@ $("#sign_up").on("click", () => {
         const passwordValidationInput = $("#passwordValidationInput").val();
         //checks for input
         if(!usernameInput || !passwordInput || !passwordValidationInput) {
-            console.log(usernameInput)
-            console.log(passwordInput)
-            console.log(passwordValidationInput)
             alert("Brugernavn og kodeord er ikke skrevet ind. Prøv igen");
         } else {
             //verifies password match
@@ -102,9 +99,6 @@ $("#sign_up").on("click", () => {
             } else {
                 alert("kodeordet matcher ikke. Prøv igen");
             }
-
          }
     });
-
-
 });

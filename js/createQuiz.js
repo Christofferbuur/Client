@@ -37,29 +37,30 @@ $(document).ready(() => {
 
             //request to create quiz
             SDK.createQuiz(createdBy, quizTitle, quizDescription, courseId, questionCount, (err, data) => {
-
+                //Question modal
                 $('#questionModal').modal('show');
+                //saving quizId as json
                 var createdQuiz = JSON.parse(data);
                 const quizId = createdQuiz.quizId;
 
+                //modal with question count
                 var i = 1;
                 $(".modal-title").html(`<h1>${i}. Spørgsmål</h1>`);
 
-
+                //listener to clickevent
                 $("#addQuestionBtn").click(() => {
                     const createdQuestion = $("#question").val();
-
+                    //checks for input
                     if(!createdQuestion) {
-                        alert("Information is missing. Please try again");
+                        alert("Du har ikke indtastet et spørgsmål");
                     }else {
-                        console.log(createdQuestion);
+                        //request to create option
                         SDK.createQuestion(createdQuestion, quizId, (err, data) => {
                             if (err && err.xhr.status === 400) {
                                 console.log("client fail")
                             }
                              else {
-                                $("#question").val("");
-
+                                //saving user input
                                 const newQuestion = JSON.parse(data);
                                 const optionToQuestionId = newQuestion.questionId;
                                 const correctOption1 = $("#correctOption").val();
@@ -69,13 +70,12 @@ $(document).ready(() => {
 
                                 //checks for data
                                 if (!correctOption1 || !wrongOption1 || !wrongOption2 || !wrongOption3) {
-                                    alert("Information mangler");
+                                    alert("Alle svarmuligheder skal udfyldes");
                                 } else {
-                                    //header on modal
-                                    $(".modal-title").html(`<h1>${++i}. spørgsmål</h1>`);
-
-                                    var isCorrect = 1;
-                                    SDK.createOption(correctOption1, optionToQuestionId, isCorrect, (err, data) => {
+                                    //variable for correct
+                                    var correct = 1;
+                                    //Request to create option
+                                    SDK.createOption(correctOption1, optionToQuestionId, correct, (err, data) => {
                                         if (err && err.xhr.status === 400) {
                                             console.log("client fail")
                                         }
@@ -84,7 +84,7 @@ $(document).ready(() => {
                                         } else {
                                             $("#correctOption").val("");
                                             //Request to create option
-                                            SDK.createOption(wrongOption1, optionToQuestionId, isCorrect = 0, (err, data) => {
+                                            SDK.createOption(wrongOption1, optionToQuestionId, correct = 0, (err, data) => {
 
                                                 if (err && err.xhr.status === 400) {
                                                     console.log("client fail")
@@ -92,9 +92,10 @@ $(document).ready(() => {
                                                 else if (err) {
                                                     console.log("Error")
                                                 } else {
+                                                    //clears text
                                                     $("#wrongOption1").val("");
 
-                                                    SDK.createOption(wrongOption2, optionToQuestionId, isCorrect = 0, (err, data) => {
+                                                    SDK.createOption(wrongOption2, optionToQuestionId, correct = 0, (err, data) => {
 
                                                         if (err && err.xhr.status === 400) {
                                                             console.log("client fail")
@@ -104,7 +105,7 @@ $(document).ready(() => {
                                                         } else {
                                                             $("#wrongOption2").val("");
 
-                                                            SDK.createOption(wrongOption3, optionToQuestionId, isCorrect = 0, (err, data) => {
+                                                            SDK.createOption(wrongOption3, optionToQuestionId, correct = 0, (err, data) => {
 
                                                                 if (err && err.xhr.status === 400) {
                                                                     console.log("client fail")

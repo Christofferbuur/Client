@@ -7,13 +7,17 @@ $(document).ready(() => {
         var $table = $(".table");
         if (err) throw err;
 
+        //creates question json object
         var questions = JSON.parse(question);
+        //while loop run along the length of questions
         while (i < questions.length) {
 
             var question = (questions[i].question);
+            //loads options to specific question
             loadOptions(question);
 
             function loadOptions(question) {
+                //request to load options
                 SDK.loadOptions(questions[i].questionId, (err, option) => {
                     let options = JSON.parse(option);
                     //randomize options
@@ -21,7 +25,7 @@ $(document).ready(() => {
 
                     $(".table").append(`<h2>${question}</h2>`);
                     var optionLength = options.length;
-
+                    //loads all options
                     for (var k = 0; k < optionLength; k++) {
                         //Use the option to find the questionId
                         let optionsToQId= options[k].optionToQuestionId;
@@ -37,24 +41,37 @@ $(document).ready(() => {
         // husk at ændre
         $("#submit").click(() => {
 
-            let Answers = 0;
-            let correctAnswers = 0;
+            var answers = 0;
+            var correctAnswers = 0;
 
+            //answer radio declared earlier
             $(".answer-radio").each(function () {
+                //checks if option is chosen
                 if ($(this).is(":checked")) {
-                    Answers++;
+
+                    answers++;
                     if ($(this).val() == 1) {
                         correctAnswers++;
+                        console.log("11111")
                     }
                 }
             });
 
+            //calculates score
+            var score = ((answers / correctAnswers) * 100);
+            //program crash if divided by 0
+            if ( correctAnswers > 0){
+                $("#resultPercent").append(`<p><b>${score} % korrekt</b> </p>`);
+            }
+
             //Shows modal and score
             $('#submitModal').modal('show');
-            $("#result").append(`<p>You got <b>${correctAnswers}</b> out of <b>${Answers}</b> questions correct.</p>`);
+            $("#result").append(`<p> Du fik <b>${correctAnswers}</b> af <b>${answers}</b> svar korrekt.</p>`);
 
             $("#closeBtn").on("click", () => {
                 $("#result").html("");
+                $("#resultPercent").html("");
+
                 $('#submitModal').modal('hide');
             });
 
