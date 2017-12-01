@@ -10,5 +10,6 @@ const name = SDK.currentUser().username;
 
     if (user.type === 2) {
         $('#createQuiz').hide();
+        $('#printAllQuizzes').hide();
     }
 });

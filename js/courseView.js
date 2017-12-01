@@ -29,7 +29,7 @@ SDK.loadCourses((err, course) => {
 
         //defines variable, name, as the row closest, and takes the text from row 0
         var name = $(this).closest("tr").find("td:eq(0)").text();
-        window.location.href = "loadQuiz.html";
+        window.location.href = "quizView.html";
 
         //for-loop persists the chosen course
         for (var i = 0; i < courses.length; i++) {

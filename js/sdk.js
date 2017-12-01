@@ -233,8 +233,6 @@ const SDK = {
 
     //create a question
     createQuestion: (question, quizId, callback) => {
-        console.log(question);
-        console.log(quizId);
 
         SDK.request({
             data: {

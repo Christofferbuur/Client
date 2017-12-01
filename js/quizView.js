@@ -80,7 +80,16 @@ SDK.loadQuizzes((err, quiz) => {
             location.reload();
         })
     });
+
 });
+
+// if loop manages createQuiz option
+    const user = SDK.currentUser();
+    console.log(user.type)
+
+    if (user.type === 2) {
+        $('#createQuiz').hide();
+    }
 
 
 });

@@ -22,24 +22,6 @@ margin: 0;
 
 }
 
-.tap_panels ul li:hover{
-    color: #dff0d8;
-}
-
-.tap_panels .panel{
-  display: none;
-    background: #c0c0c0;
-}
-
-.tap_panels.taps.active{
-    color:greenyellow;
-}
-
-.tap_panels .panel.active {
-    display:block;
-    background: #c0c0c0;
-
-}
 .container-fluid{
     background-color: lightblue !important;
     border-color:#ffffff !important;
@@ -47,15 +29,10 @@ margin: 0;
 #logoutButton{
     left:1178%;
 }
-#btn{
-    left:5800%;
+#btn {
+    left: 5800%;
     margin-top: 18px;
-
-
-}.jumbotron{
- }
-
-
-.color_white{
-    color:gainsboro;
+}
+.black{
+    color: black;
 }

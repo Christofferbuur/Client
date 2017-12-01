@@ -69,22 +69,20 @@ $(document).ready(() => {
 
                                 //checks for data
                                 if (!correctOption1 || !wrongOption1 || !wrongOption2 || !wrongOption3) {
-                                    alert("Information is missing. Please try again");
+                                    alert("Information mangler");
                                 } else {
                                     //header on modal
-                                    $(".modal-title").html(`<h1>${++i}. question</h1>`);
+                                    $(".modal-title").html(`<h1>${++i}. spørgsmål</h1>`);
 
                                     var isCorrect = 1;
                                     SDK.createOption(correctOption1, optionToQuestionId, isCorrect, (err, data) => {
-
-                                        console.log(data);
                                         if (err && err.xhr.status === 400) {
                                             console.log("client fail")
                                         }
                                         else if (err) {
                                             console.log("Error")
                                         } else {
-                                            $("#correct").val("")
+                                            $("#correctOption").val("");
                                             //Request to create option
                                             SDK.createOption(wrongOption1, optionToQuestionId, isCorrect = 0, (err, data) => {
 
@@ -130,7 +128,7 @@ $(document).ready(() => {
                 });
                 //listener on save button
                 $("#saveQuizBtn").click(() => {
-                        window.location.href = "admin.html"
+                        window.location.href = "user.html"
             });
         });
     });
@@ -140,26 +138,5 @@ $(document).ready(() => {
         window.location.href = "user.html";
     });
 });
-/*
 
-    var courseToChoose = JSON.parse(courseToChoose);
-    var courseLength = courseToChoose.length;
-var i = 0;
-        for (var k = 0; k < courseLength; k++) {
-
-        }
-
-            $(".table").append(`<p><input type="radio" name="option${question.questionId}"<br>  ${options[k].option} </p>`);
-        }
-        loadOptions(question);
-        $(".table").append(`<h2>${question}</h2>`);
-
-    });
-
-        }
-    }
-
-
-
-*/
 

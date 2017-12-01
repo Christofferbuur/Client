@@ -12,12 +12,87 @@
 
 <body>
 
+
+
 <h1 class = color_white>Velkommen til quiz</h1>
 
 <p><a class="btn btn-primary btn-lg" id="sign_up" >Opret bruger</a></p>
 <p><a class="btn btn-primary btn-lg" id="login" >Log ind</a></p>
 
-    <script src="../lib/js/jquery-3.2.1.js"></script>
+
+
+
+<div class="container">
+    <div class="modal fade bd-example-modal-lg" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h1 class="modal-title">Log ind</h1>
+                    <div class="modal-body">
+
+                        <div class="form-group">
+
+                            <label class = black  for="username">Brugernavn</label>
+                            <input type="text" class="form-control" id="username" placeHolder="Brugernavn">
+                            <div class="form-group">
+                                <label for="password" class = black >Kode</label>
+                                <input type="password" class="form-control" id="password" placeholder="Kodeord">
+                                            <div class="modal-footer">
+                                                <button class="btn btn-primary btn-lg" id="LoginReturn_button">Tilbage</button>
+                                                <button class="btn btn-primary btn-lg" id="login_button">Log ind</button>
+                                            </div>
+                            </div>
+                         </div>
+                     </div>
+                  </div>
+             </div>
+         </div>
+    </div>
+</div>
+
+
+
+<div class="container">
+    <div class="modal fade bd-example-modal-lg" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h1 class="modal-title">Opret bruger</h1>
+                    <div class="modal-body">
+                    </div>
+                        <div class="form-group">
+                            <label for="usernameInput">Brugernavn</label>
+                            <input type="text" class="form-control" id="usernameInput" placeHolder="Brugernavn">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="passwordInput" >Kode</label>
+                            <input type="password" class="form-control" id="passwordInput" placeholder="Kodeord">
+                        </div>
+                    <div class="form-group">
+                            <label  for="passwordValidationInput" >Gentag kode</label>
+                            <input type="password" class="form-control" id="passwordValidationInput" placeholder="Kodeord">
+                                </div>
+                                 <button class="btn btn-primary btn-lg" id="signupReturn_button">Tilbage</button>
+                                 <button class="btn btn-primary btn-lg" id="create_button">Opret bruger</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script src="../lib/js/jquery-3.2.1.js"></script>
     <script src="../lib/js/bootstrap.js"></script>
     <script src="../js/sdk.js"></script>
     <script src="../js/index.js"></script>
